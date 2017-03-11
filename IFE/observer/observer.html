@@ -6,7 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    
+    <h1>将以下三行代码分别放到控制台执行</h1>
+    <p>
+      let obj = {
+        a: 1,
+        b: 2,
+        c: {
+            d: 3,
+            e: 4
+        }
+      };
+      let app1 = new Observer(obj);
+      app1.data.c.d;
+    </p>
+
+    <p>
+      let app2 = new Observer({
+        name: 'youngwind',
+        age: 25
+      });
+
+      app2.data.name = {
+        lastName: 'liang',
+        firstName: 'shaofeng'
+      };
+
+      app2.data.name.lastName;
+      app2.data.name.firstName = 'lalala';
+    </p>
+    <p>
+      let app3 = new Observer({
+        name: 'youngwind',
+        age: 25
+      });
+
+      app3.$watch('age', function(age) {
+        console.log(`我的年纪变了，现在已经是：${age}岁了`)
+      });
+
+      app3.data.age = 100;
+    </p>
+
   </body>
   <script src="./observer.js"></script>
 </html>
