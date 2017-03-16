@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Observer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="app">
+      <p>姓名：{{user.name.first}} {{user.name.last}}</p>
+      <p>年龄：{{user.age}}</p>
+    </div>
+    <button onClick='run()'>执行</button>
+  </body>
+  <script src="./render.js"></script>
+  <script>
+    function run () {
+      new Vue({
+        el: 'app',
+        data: {
+          user: {
+            age: 29,
+            name: {
+              last: 'lin',
+              first: 'jilei'
+            }
+          }
+        }
+      })
+    }
+  </script>
+</html>
