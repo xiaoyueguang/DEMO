@@ -1,5 +1,5 @@
 class Observer {
-  constructor (obj, isCreatedPri) {
+  constructor (obj, isCreatedPri, parentWatchTrigger) {
     // 对象
     let _observer = isCreatedPri ? {} : {data: {}}
     let _data = isCreatedPri ? _observer : _observer.data
@@ -8,7 +8,11 @@ class Observer {
     // 私有watch
     let _watch = new Watch()
     for (let key in obj) {
-      _obj[key] = typeof obj[key] === 'object' ? new Observer(obj[key], true) : obj[key]
+      _obj[key] = typeof obj[key] === 'object' ?
+        new Observer(obj[key], true, function () {
+          // 触发父类
+          _watch.trigger(key)
+        }) : obj[key]
 
 
       Object.defineProperty(_data, key, {
@@ -19,12 +23,19 @@ class Observer {
 
         set (val) {
           if (typeof val === 'object') {
-            val = new Observer(val, true)
+            val = new Observer(val, true, function () {
+              // 触发父类
+              _watch.trigger(key)
+            })
           }
-          console.log(`你设置了 ${key}, 新的值为:`, val)
+          console.log(`你设置了 ${key}, 新的值为: ${val}`)
           _obj[key] = val
-          // if (key === 'gg') {window.gg = _obj}
           _watch.trigger(key)
+
+          if (typeof parentWatchTrigger === 'function') {
+            parentWatchTrigger()
+          }
+
           return val
         }
       })
