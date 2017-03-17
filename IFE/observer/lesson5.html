@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Observer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="app">
+      <p>姓名：{{user.name}}</p>
+      <p>年龄：{{user.age}}</p>
+    </div>
+    <form>
+      <label>姓名</label>
+      <input type="text" oninput="change(this, 'name')" value="">
+      <label>年龄</label>
+      <input type="text" oninput="change(this, 'age')" value="">
+    </form>
+  </body>
+  <script src="./observer.js"></script>
+  <script src="./render1.js"></script>
+  <script>
+    var vm = new Vue({
+      el: 'app',
+      data: {
+        user: {
+          age: 29,
+          name: 'hehe'
+        }
+      }
+    })
+    function change (elem, field) {
+      vm.$data.user[field] = elem.value
+    }
+  </script>
+</html>
