@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>正则表达式之入门</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>正则验证</h1>
+    <span>请输入手机号</span>
+    <input type="text" id="phone" value="13336951177">
+    <span id="phone-msg"></span>
+    <br/>
+    <br/>
+    <span>请输入字符串</span>
+    <input type="text" id="word" value="foo 1foo bar">
+    <span id="word-msg"></span>
+  </body>
+  <script src="./verify.js"></script>
+  <script>
+    function $ (id) {
+      return document.getElementById(id)
+    }
+    function bind ($elem, methods) {
+      $elem.$el.addEventListener('input', e => {
+        $elem.$msg.innerHTML = methods($elem.$el.value)
+      })
+    }
+
+    let $phone = {
+      $el: $('phone'),
+      $msg: $('phone-msg')
+    }
+    let $word = {
+      $el: $('word'),
+      $msg: $('word-msg')
+    }
+    bind($phone, verifyPhone)
+    bind($word, verifyRepeat)
+  </script>
+</html>
