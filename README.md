@@ -5,6 +5,7 @@
 ## 完成
 [LazyMan](https://xiaoyueguang.github.io/DEMO/lazyman)  
 [拖拽](https://xiaoyueguang.github.io/DEMO/drag)
+[IFE](https://xiaoyueguang.github.io/DEMO/IFE)
 
 ## 未完成
 [轮播]  
