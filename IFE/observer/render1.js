@@ -47,3 +47,32 @@ class Vue {
     }
   }
 }
+mapDom(document.getElementById('app'))
+
+function mapDom (elem) {
+  elem = elem.firstChild;
+
+  while (elem && elem.nextElementSibling) {
+    elem = elem.nextElementSibling
+    textParser(elem)
+    mapDom(elem)
+  }
+}
+
+function textParser (elem) {
+  let name = 'hehe'
+  let age = '111'
+  let $scope = attr(elem)
+  // TODO
+  elem.innerHTML = eval($scope)  
+  
+  // console.log(result())
+}
+
+function attr (elem) {
+  let attr = elem.getAttribute('v-text')
+  elem.removeAttribute('v-text');
+  return attr
+}
+
+
