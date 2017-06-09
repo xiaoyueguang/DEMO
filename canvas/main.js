@@ -1,4 +1,3 @@
-// file:///Users/ray/Documents/project/DEMO/canvas/index.html
 // 画布
 function render () {
 

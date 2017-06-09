@@ -4,13 +4,14 @@
 
 ## 完成
 [LazyMan](https://xiaoyueguang.github.io/DEMO/lazyman)  
-[拖拽](https://xiaoyueguang.github.io/DEMO/drag)
-[IFE](https://xiaoyueguang.github.io/DEMO/IFE)
-[粒子效果](https://xiaoyueguang.github.io/DEMO/canvas)
+[拖拽](https://xiaoyueguang.github.io/DEMO/drag)  
+[IFE](https://xiaoyueguang.github.io/DEMO/IFE)  
+[粒子效果](https://xiaoyueguang.github.io/DEMO/canvas)  
 ## 未完成
 [轮播]  
 [query]  
 [mvvm]  
+[波浪]  
 
 
 目标很远大...
