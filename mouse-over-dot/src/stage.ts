@@ -1,5 +1,7 @@
-const canvas = document.getElementById('canvas')
-const ctx = canvas.getContext('2d')
+
+let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById('canvas')
+
+const ctx: CanvasRenderingContext2D = canvas.getContext('2d')
 
 import {width, height, random} from './helper'
 
@@ -15,12 +17,40 @@ const mousePointer = new Pointer()
 
 const isOut = ({x, y}) => (x > width || x < 0) || (y > height || y < 0)
 
-const App = {
-  pointers: [],
+/**
+ * 主要APP
+ */
+interface App {
+  /**
+   * 点的集合
+   */
+  pointers: Pointer[],
+  /**
+   * 添加点
+   */
+  addPointer(): void,
+  /**
+   * 重绘点
+   */
+  pointersRender(): void,
+  /**
+   * 重绘线
+   */
+  linesRender(): void,
+  /**
+   * 刷新页面
+   */
+  render(): void
+}
+
+class App {
+  constructor () {
+    this.pointers = []
+  }
 
   addPointer () {
     this.pointers.push(new Pointer())
-  },
+  }
 
   pointersRender () {
     this.pointers.forEach(pointer => {
@@ -49,7 +79,7 @@ const App = {
       ctx.fillStyle = pointer.isMouse ? 'rgba(0, 0, 0, 0)' : '#000'
       ctx.fill()
     })
-  },
+  }
 
   linesRender () {
     this.pointers.forEach(pointer1 => {
@@ -65,9 +95,7 @@ const App = {
         }
       })
     })
-  },
-
-
+  }
 
   render () {
     ctx.clearRect(0, 0, width, height)
@@ -80,17 +108,19 @@ const App = {
   }
 }
 
+const app = new App()
+
 for (let i = 0; i < 100; i ++) {
-  App.addPointer()
+  app.addPointer()
 }
 
-App.render()
+app.render()
 
 
 mousePointer.isMouse = true
 
 canvas.addEventListener('mouseenter', function () {
-  App.pointers.push(mousePointer)
+  app.pointers.push(mousePointer)
 })
 
 canvas.addEventListener('mousemove', function ({clientX, clientY}) {
@@ -99,5 +129,5 @@ canvas.addEventListener('mousemove', function ({clientX, clientY}) {
 })
 
 canvas.addEventListener('mouseleave', function () {
-  App.pointers.splice(App.pointers.indexOf(mousePointer))
+  app.pointers.splice(app.pointers.indexOf(mousePointer))
 })

@@ -1,7 +1,11 @@
+const rollupTypescript = require('rollup-plugin-typescript')
+
 export default {
-  entry: './src/stage.js',
+  entry: './src/stage.ts',
   format: 'cjs',
   dest: './dist/app.js',
-  // sourceMap: true,
+  plugins: [
+    rollupTypescript()
+  ],
   banner: '/* DEMO-LINJILEI */'
 }

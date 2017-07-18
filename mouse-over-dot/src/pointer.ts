@@ -1,10 +1,53 @@
 import {width, height, random} from './helper'
 
-const tween = 5000
+const tween:number = 5000
+/**
+ * 点
+ */
+interface Pointer {
+  constructor();
+  /**
+   * 点的 X 轴
+   */
+  x: number;
+  /**
+   * 点的 Y 轴
+   */
+  y: number;
+  /**
+   * 点的目标 X 轴
+   */
+  targetX: number;
+  /**
+   * 点的目标 Y 轴
+   */
+  targetY: number;
+  /**
+   * 该点是否为鼠标下的点
+   */
+  isMouse: boolean;
+  /**
+   * 生成一个随机点坐标
+   */
+  init(isTarget?: boolean): {x: number, y: number};
+  /**
+   * 移动点
+   */
+  move(pointer?: Pointer): void;
+  /**
+   * 设置目标点
+   */
+  setTarget(x?: number, y?: number): void;
+}
+/**
+ * 移动点
+ * @param origin 原来的点
+ * @param target 目标点
+ * @param mousePointer 鼠标的坐标
+ */
+function movePointer (origin: number, target: number, mousePointer?: Pointer): number {
 
-function movePointer (origin, target) {
-  
-  function space (defaultValue) {
+  function space (defaultValue: number): number {
     let space = ~~(origin - target) / tween
     return space === 0 ? defaultValue : space
   }
@@ -18,7 +61,7 @@ function movePointer (origin, target) {
   }
 }
 
-export default class Pointer {
+ class Pointer {
   constructor () {
     const {x, y} = this.init()
     this.x = x
@@ -27,7 +70,7 @@ export default class Pointer {
     this.setTarget()
     this.isMouse = false
   }
-  // 生成点
+
   init (isTarget) {
     return {
       x: random(width) + (isTarget ? (random(2) > 1 ? -width : width) : 0),
@@ -35,14 +78,12 @@ export default class Pointer {
     }
   }
 
-  // 移动
   move (mousePointer) {
     let org = this.x
     this.x = movePointer(this.x, this.targetX, mousePointer)
     this.y = movePointer(this.y, this.targetY, mousePointer)
   }
 
-  // 设置目标点
   setTarget (x, y) {
     let pointer = this.init(true)
     if (arguments.length === 0) {
@@ -60,5 +101,6 @@ export default class Pointer {
     }
   }
 
-
 }
+
+export default Pointer
