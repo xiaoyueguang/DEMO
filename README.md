@@ -3,15 +3,13 @@
 [首页链接](https://xiaoyueguang.github.io/DEMO/)
 
 ## 完成
-[LazyMan](https://xiaoyueguang.github.io/DEMO/lazyman)  
-[拖拽](https://xiaoyueguang.github.io/DEMO/drag)  
-[IFE](https://xiaoyueguang.github.io/DEMO/IFE)  
-[粒子效果](https://xiaoyueguang.github.io/DEMO/canvas)  
-## 未完成
-[轮播]  
-[query]  
-[mvvm]  
-[波浪]  
+- [x] [LazyMan](https://xiaoyueguang.github.io/DEMO/lazyman)  
+- [x] [拖拽](https://xiaoyueguang.github.io/DEMO/drag)  
+- [x] [IFE](https://xiaoyueguang.github.io/DEMO/IFE)  
+- [x] [粒子效果](https://xiaoyueguang.github.io/DEMO/canvas)  
+- [x] [粒子效果(鼠标移动)](https://xiaoyueguang.github.io/DEMO/mouse-over-dot)  
+- [ ] [轮播]  
+- [ ] [query]  
+- [ ] [mvvm]  
+- [ ] [波浪]  
 
-
-目标很远大...
