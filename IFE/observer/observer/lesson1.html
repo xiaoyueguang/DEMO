@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Observer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>将以下代码放到控制台执行</h1>
+    <p>
+      let app1 = new Observer({
+        name: 'linjilei',
+        age: 25
+      });
+
+      let app2 = new Observer({
+        university: 'beijing',
+        major: 'computer'
+      });
+      app1.data.name ;
+      app1.data.age = 100;
+      app2.data.university;
+      app2.data.major = 'science';
+    </p>
+
+  </body>
+  <script src="./observer.js"></script>
+</html>
