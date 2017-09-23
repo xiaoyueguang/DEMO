@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS-FILTER</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <h1>CSS-FILTER</h1>
+    <div class="clear">
+      <div class="preview">
+        <img src="./TEST.png">
+        <img id="filter" class="filter" src="./TEST.png">
+      </div>
+      <div class="control">
+        <div class="item">
+          <label for="Blur">模糊 Blur</label>
+          <input type="range" id="Blur" value="0">
+          <span id="Blur-text">0</span>
+        </div>
+        <div class="item">
+          <label for="Sepia">棕镜 Sepia</label>
+          <input type="range" id="Sepia" value="0">
+          <span id="Sepia-text">0</span>
+        </div>
+        <div class="item">
+          <label for="Grayscale">灰度 Grayscale</label>
+          <input type="range" id="Grayscale" value="0">
+          <span id="Grayscale-text">0</span>
+        </div>
+        <div class="item">
+          <label for="Saturate">饱和度 Saturate</label>
+          <input type="range" id="Saturate" value="0">
+          <span id="Saturate-text">0</span>
+        </div>
+        <div class="item">
+          <label for="Hue-rotate">色相反转 Hue-rotate</label>
+          <input type="range" id="Hue-rotate" value="0">
+          <span id="Hue-rotate-text">0</span>
+        </div>
+        <div class="item">
+          <label for="Invert">反色 Invert</label>
+          <input type="range" id="Invert" value="0">
+          <span id="Invert-text">0</span>
+        </div>
+        
+        <div class="item">
+          <label for="Opacity">透明度 Opacity</label>
+          <input type="range" id="Opacity" value="100">
+          <span id="Opacity-text">1</span>
+        </div>
+        
+        <div class="item">
+          <label for="Brightness">亮度 Brightness</label>
+          <input type="range" id="Brightness" value="100">
+          <span id="Brightness-text">1</span>
+        </div>
+        
+        <div class="item">
+          <label for="Contrast">对比度 Contrast</label>
+          <input type="range" id="Contrast" value="100">
+          <span id="Contrast-text">1</span>
+        </div>
+        
+        <div class="item">
+          <label for="Drop-shadow">阴影 Drop-shadow</label>
+          <input type="range" id="Drop-shadow" value="0">
+          <span id="Drop-shadow-text">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>HOVER:</p>
+      <img class="hover-bright" src="./TEST.png">
+      <p>头像投影</p>
+      <div class="avator"></div>
+    </div>
+    <p>HOVER: </p>
+    <div id="ball">
+      <div></div>
+      <div></div>
+    </div>
+
+  </body>
+  <script src="https://xiaoyueguang.github.io/simple-dom-query/dist/simpleDomQuery.min.js"></script>
+  <script src="./index.js"></script>
+  <script>
+  </script>
+</html>

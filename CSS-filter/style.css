@@ -1,0 +1,98 @@
+.preview {
+  width: 50%;
+  float: left;
+  border: 2px solid #B9B9B9;
+  text-align: center;
+  height: 404px;
+}
+
+.preview img {
+  margin: 24px;
+}
+
+.control {
+  float: right;
+  border: 2px solid #B9B9B9;
+  padding: 24px;
+  margin-right: 48px;
+}
+
+.control label {
+  width: 168px;
+  text-align: right;
+  display: inline-block;
+}
+
+.control span {
+  display: inline-block;
+  width: 188px;
+}
+
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.hover-bright {
+  transition: all .4s ease;
+}
+
+.hover-bright:hover {
+  filter: brightness(1.1);
+}
+
+.avator {
+  width: 347px;
+  height: 347px;
+  background: url(./test.png);
+  position: relative;
+}
+
+.avator:after {
+  content: '';
+  display: block;
+  background: inherit;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: inherit;
+  height: inherit;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+#ball {
+  width: 400px;
+  height: 200px;
+  filter: contrast(10);
+  position: relative;
+}
+
+#ball div {
+  width: 96px;
+  height: 96px;
+  background: red;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  filter: blur(10px);
+  overflow: hidden;
+}
+#ball div:last-child {
+  width: 48px;
+  height: 48px;
+  background: black;
+  transform: translateX(48px);
+  transition: all 1s ease;
+}
+
+#ball:hover div:last-child {
+  transform: translateX(-96px);
+}
