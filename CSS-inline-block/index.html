@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS-inline-block</title>
+</head>
+<body>
+  <div class="box">
+    <div class="block">block文字block文字block文字</div>
+    <div class="block">block文字block文字block文字</div>
+  </div>
+  <div class="box">
+    <div class="inline">inline文字inline文字inline文字</div>
+    <div class="inline">inline文字inline文字inline文字</div>
+  </div>
+  <div class="box">
+    <div class="inline-block">inline-blockinline-block</div>
+    <div class="inline-block">inline-blockinline-block</div>
+  </div>
+</body>
+
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    margin: 12px;
+    border: 1px solid red;
+    float: left;
+  }
+  .block {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 12px;
+    padding: 12px;
+    background: red;
+  }
+  .inline {
+    display: inline;
+    width: 100px;
+    height: 100px;
+    margin: 12px;
+    padding: 12px;
+    background: blue;
+  }
+  .inline-block {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 12px;
+    padding: 12px;
+    background: yellow;
+  }
+</style>
+</html>
