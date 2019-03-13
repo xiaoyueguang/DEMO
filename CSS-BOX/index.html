@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS-BOX</title>
+</head>
+<body>
+  <div id="box1"></div>
+  <div style="height: 50px;"></div>
+  <div id="box2"></div>
+</body>
+
+<style>
+  #box1 {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    padding: 8px;
+    border: 10px solid red;
+    margin: 12px;
+    background: blue;
+  }
+  #box2 {
+    box-sizing: content-box;
+    width: 100px;
+    height: 100px;
+    padding: 8px;
+    border: 10px solid red;
+    margin: 12px;
+    background: blue;
+  }
+</style>
+</html>
