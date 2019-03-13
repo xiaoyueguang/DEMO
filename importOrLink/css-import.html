@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./import.css">
+</head>
+<body>
+  <div id="app">Hello World!</div>
+  <div id="text"></div>
+</body>
+<script>
+  const app = document.querySelector('#app')
+  // alert(app.innerText)
+  // alert(getComputedStyle(app).color)
+  document.querySelector('#text').innerText = getComputedStyle(app).color
+</script>
+</html>
