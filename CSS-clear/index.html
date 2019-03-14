@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS-CLEAR</title>
+</head>
+<body>
+  <div class="block">
+    <div class="content">
+      <div class="float">float文字</div>
+    </div>
+    <div class="float">未清除</div>
+  </div>
+  <div class="block">
+    <div class="content">
+      <div class="float">float文字</div>
+    </div>
+    <div class="clear"></div>
+    <div class="float">利用 clear: both; 清除</div>
+  </div>
+  <div class="block">
+    <div class="content auto">
+      <div class="float">float文字</div>
+    </div>
+    <div class="float">利用 overflow:auto; 清除</div>
+  </div>
+  <div class="block">
+    <div class="content hidden">
+      <div class="float">float文字</div>
+    </div>
+    <div class="float">利用 overflow: hidden; 清除</div>
+  </div>
+  <div class="block">
+    <div class="content after-clear">
+      <div class="float">float文字</div>
+    </div>
+    <div class="float">在:after中清除</div>
+  </div>
+</body>
+<style>
+  .block {
+    width: 300px;
+    height: 300px;
+    float: left;
+    border: 1px solid red;
+    margin-left: 12px;
+  }
+  .float {
+    float: left;
+  }
+  .clear {
+    clear: both;
+  }
+  .auto {
+    overflow: auto;
+  }
+  .hidden {
+    overflow: hidden;
+  }
+  .after-clear:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+</style>
+</html>
