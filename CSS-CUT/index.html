@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文本截断</title>
+  <style>
+    .panel {
+      width: 200px;
+      background: gray;
+      margin-bottom: 32px;
+    }
+    .single-cut {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .multi-cut {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .multi-cut-2 {
+      line-height: 32px;
+      max-height: 64px;
+      overflow: hidden;
+      position: relative;
+    }
+    .multi-cut-2:after {
+      content: '...';
+      position: absolute;
+      height: 32px;
+      line-height: 32px;
+      width: 32px;
+      background: gray;
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div>内容来自 https://mp.weixin.qq.com/s/-QQw0BNLJQcgCBI9nqgFag, 该项目为DEMO</div>
+  <div class="panel">
+    <h4>无截断</h4>
+    <p >这是一段很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的一句话</p>
+  </div>
+  <div class="panel">
+    <h4>单行文字截断</h4>
+    <p class="single-cut">这是一段很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的一句话</p>
+  </div>
+  <div class="panel">
+    <h4>多行文字截断</h4>
+    <p class="multi-cut">这是一段很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的一句话</p>
+  </div>
+
+  <div class="panel">
+    <h4>JS截断(运用JS运算, 受字体影响大)</h4>
+    <p class="js-cut">这是一段很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的一句话</p>
+    <script>
+      ;(function () {
+        const jsCut = document.querySelector('.js-cut')
+        const lineWidth = parseInt(getComputedStyle(jsCut).width)
+        const fontSize = parseInt(getComputedStyle(jsCut).fontSize)
+        // 行数
+        const lineNums = 2
+        // 计算所需的文字
+        // 字体不一样所需文字会不一样. 比如等宽与非等宽下的英文字符.
+        const text = jsCut.innerText.substr(0, Math.floor(lineWidth / fontSize) * lineNums)
+        jsCut.innerText = text.substr(0, text.length - 2) + '...'
+      })();
+    </script>
+  </div>
+
+  <div class="panel">
+    <h4>多行文字截断 (通过max-height 限制高度, line-height得到最终行数. 然后利用一个绝对定位补充省略号, 定位在最后)</h4>
+    <p class="multi-cut-2">这是一段很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的一句话</p>
+  </div>
+  <div></div>
+</body>
+</html>
