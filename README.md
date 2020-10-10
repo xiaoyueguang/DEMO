@@ -8,7 +8,7 @@
 - [x] [IFE](https://xiaoyueguang.github.io/DEMO/IFE)  
 - [x] [粒子效果](https://xiaoyueguang.github.io/DEMO/canvas)  
 - [x] [粒子效果(鼠标移动)](https://xiaoyueguang.github.io/DEMO/mouse-over-dot)  
-- [x] [observer](https://xiaoyueguang.github.io/DEMO/observer)  
+- [x] [observer](https://xiaoyueguang.github.io/DEMO/observer/index.html)  
 - [ ] [轮播]  
 - [ ] [query]  
 - [ ] [mvvm]  
