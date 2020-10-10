@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <label for="">名字</label><input type="text" id="firstname-input">
+      <label for="">年龄</label><input type="text" id="age-input">
+    </div>
+    <p>我叫<span id="name"></span>, 我<span id="age"></span>岁了</p>
+  </div>
+</body>
+<script type="module">
+  import { Observer, Watcher, watchers, deps } from './index.js'
+  window.deps = deps;
+  window.watchers = watchers;
+
+  const $name = document.getElementById('name')
+  const $age = document.getElementById('age')
+
+  const data = {
+    firstname: 'Lei',
+    lastname: 'Li',
+    age: 18
+  };
+
+  new Observer(data)
+
+  new Watcher(data, function (data) {
+    return data.age;
+  }, function (val, oldVal) {
+    console.log(`值变化: ${oldVal} -> ${val}`)
+    $age.innerText = val;
+  })
+
+  new Watcher(data, function (data) {
+    // computed
+    return data.lastname + data.firstname
+  }, function (val, oldVal) {
+    console.log(`值变化: ${oldVal} -> ${val}`)
+    $name.innerText = val;
+  })
+
+  window.data = data;
+
+  bind('firstname')
+  bind('age')
+  function bind(key) {
+    const input = document.getElementById(`${key}-input`)
+
+    input.addEventListener('input', e => {
+      data[key] = e.target.value
+    })
+    input.value = data[key]
+  }
+
+</script>
+</html>
