@@ -117,9 +117,27 @@ export class Watcher {
 }
 export class Observer {
     constructor(value) {
+        const deps = {};
         Object
             .keys(value)
-            .forEach((key) => defineReactive(value, key));
+            .forEach(key => {
+            deps[key] = new Dep();
+        });
+        return new Proxy(value, {
+            get(target, key, reciver) {
+                if (currentWatcher) {
+                    deps[key].depend();
+                }
+                return Reflect.get(target, key, reciver);
+            },
+            set(target, key, value, reciver) {
+                deps[key].notify();
+                return Reflect.set(target, key, value, reciver);
+            }
+        });
+        // Object
+        //   .keys(value)
+        //   .forEach((key) => defineReactive(value, key))
     }
 }
 function defineReactive(obj, key) {

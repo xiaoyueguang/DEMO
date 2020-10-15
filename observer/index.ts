@@ -138,9 +138,28 @@ export class Watcher {
 
 export class Observer {
   constructor(value: any) {
+    const deps: { [key: string]: Dep } = {};
     Object
       .keys(value)
-      .forEach((key) => defineReactive(value, key))
+      .forEach(key => {
+        deps[key] = new Dep();
+      });
+    
+    return new Proxy(value, {
+      get(target, key: string, reciver) {
+        if (currentWatcher) {
+          deps[key].depend();
+        }
+        return Reflect.get(target, key, reciver)
+      },
+      set(target, key: string, value, reciver) {
+        deps[key].notify();
+        return Reflect.set(target, key, value, reciver)
+      }
+    })
+    // Object
+    //   .keys(value)
+    //   .forEach((key) => defineReactive(value, key))
   }
 }
 

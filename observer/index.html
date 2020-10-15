@@ -22,13 +22,13 @@
   const $name = document.getElementById('name')
   const $age = document.getElementById('age')
 
-  const data = {
+  const $data = {
     firstname: 'Lei',
     lastname: 'Li',
     age: 18
   };
 
-  new Observer(data)
+  const data = new Observer($data)
 
   new Watcher(data, function (data) {
     return data.age;
