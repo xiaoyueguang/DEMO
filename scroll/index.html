@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll</title>
+</head>
+<style>
+  html {
+    width: 1000vw;
+  }
+  #float {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 16px;
+    width: 400px;
+  }
+  #scroll p:nth-child(2n) {
+    background: blue;
+  }
+  #banner {
+    width: 200px;
+    height: 200px;
+    line-height: 100px;
+    overflow-x: scroll;
+    text-align: center;
+    scroll-snap-type: x mandatory;
+    display: flex;
+  }
+  .item {
+    width: 200px;
+    flex: 0 0 200px;
+    font-size: 64px;
+    scroll-snap-align: start;
+  }
+  .item:nth-child(2n) {
+    background: yellow;
+  }
+</style>
+<body>
+  <div id="banner">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+  </div>
+  <div>
+
+    <div id="scroll">
+
+    </div>
+
+    <div id="float">
+      <div>
+        <input name="smooth" type="radio" id="smooth" value="smooth">
+        <label for="smooth">smooth</label>
+        <input name="smooth" type="radio" id="css-smooth" value="css-smooth">
+        <label for="css-smooth">css-smooth</label>
+        <input name="smooth" type="radio" id="smooth-none" value="none">
+        <label for="smooth-none">none</label>
+      </div>
+
+        <button id="scroll-btn">scrollTo</button>
+      <div>
+        <input type="text" placeholder="输入行数值" id="line">
+        <button id="scroll-into">滚动到该行</button>
+      </div>
+    </div>
+  </div>
+
+  <style id="style">
+
+  </style>
+</body>
+
+<script>
+  function $(selector) {
+    return document.querySelector(selector);
+  }
+  function getSmoothChecked() {
+    return $('#smooth').checked ? 'smooth' : 'auto';
+  }
+
+  function onRadioChange() {
+    $('#style').innerHTML = $('#css-smooth').checked ? 'html {scroll-behavior: smooth;}' : ''
+  }
+
+  ;[
+    $('#smooth'), $('#css-smooth'), $('#smooth-none')
+  ]
+    .forEach($el => $el.addEventListener('change', onRadioChange));
+
+  $('#scroll').innerHTML = (function() {
+    return new Array(1000)
+      .fill(1)
+      .map(
+        (v, i) => new Array(1000).fill(i).join(',')
+      )
+      .map((text, index) => `<p id="line-${index}">${text}</p>`)
+      .join('')
+  })();
+
+  $('#scroll-btn').addEventListener('click', () => {
+    const { clientWidth, clientHeight } = document.body;
+    window.scrollTo({
+      top: clientHeight * Math.random(),
+      left: clientWidth * Math.random(),
+      behavior: getSmoothChecked()
+    })
+  })
+
+  $('#scroll-into').addEventListener('click', () => {
+    const line = $('#line').value || Math.ceil(Math.random() * 1000);
+    $('#line').value = line;
+
+    $(`#line-${line}`).scrollIntoView({
+      behavior: getSmoothChecked()
+    });
+  });
+</script>
+
+</html>
